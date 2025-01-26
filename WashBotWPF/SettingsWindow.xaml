@@ -1,0 +1,115 @@
+<Window x:Class="WashBotWPF.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Настройки" 
+        Height="600" 
+        Width="400"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Icon="/icon.ico">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" 
+                     VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <GroupBox Header="Данные для входа">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Логин:"/>
+                        <TextBox x:Name="LoginTextBox" 
+                                Margin="0,5,0,10"/>
+                        <TextBlock Text="Пароль:"/>
+                        <PasswordBox x:Name="PasswordBox" 
+                                   Margin="0,5,0,10"/>
+                        <CheckBox x:Name="SaveCredentialsCheckBox" 
+                                Content="Сохранить данные для входа" 
+                                Margin="0,0,0,10"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Настройка времени" 
+                         Margin="0,10">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Время открытия сайта (ЧЧ:мм:сс):"/>
+                        <TextBox x:Name="SiteOpenTimeTextBox" 
+                                Text="07:20:00" 
+                                Margin="0,5,0,10"
+                                PreviewTextInput="TimeTextBox_PreviewTextInput"
+                                LostFocus="TimeTextBox_LostFocus"/>
+                        <TextBlock Text="Время выполнения записи (ЧЧ:мм:сс):"/>
+                        <TextBox x:Name="BookingTimeTextBox" 
+                                Text="07:30:00" 
+                                Margin="0,5,0,10"
+                                PreviewTextInput="TimeTextBox_PreviewTextInput"
+                                LostFocus="TimeTextBox_LostFocus"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Режим работы" 
+                         Margin="0,10">
+                    <StackPanel Margin="10">
+                        <RadioButton x:Name="SingleBookingRadio" 
+                                   Content="Однократная запись" 
+                                   IsChecked="True"
+                                   Margin="0,0,0,5"/>
+                        <RadioButton x:Name="ScheduledBookingRadio" 
+                                   Content="Запись по расписанию" 
+                                   Margin="0,0,0,10"/>
+
+                        <GroupBox x:Name="DaysGroupBox" 
+                                 Header="Дни недели">
+                            <StackPanel Margin="5">
+                                <CheckBox x:Name="MondayCheck" 
+                                        Content="Понедельник"
+                                        Margin="0,5"/>
+                                <CheckBox x:Name="TuesdayCheck" 
+                                        Content="Вторник"
+                                        Margin="0,5"/>
+                                <CheckBox x:Name="WednesdayCheck" 
+                                        Content="Среда"
+                                        Margin="0,5"/>
+                                <CheckBox x:Name="ThursdayCheck" 
+                                        Content="Четверг"
+                                        Margin="0,5"/>
+                                <CheckBox x:Name="FridayCheck" 
+                                        Content="Пятница"
+                                        Margin="0,5"/>
+                                <CheckBox x:Name="SaturdayCheck" 
+                                        Content="Суббота"
+                                        Margin="0,5"/>
+                                <CheckBox x:Name="SundayCheck" 
+                                        Content="Воскресенье"
+                                        Margin="0,5"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <CheckBox x:Name="AutostartCheckBox" 
+                                 Content="Автозапуск при старте Windows"
+                                 Margin="0,10,0,0"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="1" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right" 
+                    Margin="0,20,0,0">
+            <Button x:Name="SaveButton" 
+                    Content="Сохранить" 
+                    Width="100" 
+                    Height="30" 
+                    Margin="0,0,10,0"
+                    Click="SaveButton_Click"/>
+            <Button x:Name="CancelButton" 
+                    Content="Отмена" 
+                    Width="100" 
+                    Height="30"
+                    Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
